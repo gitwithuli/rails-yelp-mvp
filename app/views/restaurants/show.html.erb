@@ -1,0 +1,53 @@
+
+<div class="container-fluid">
+
+<p id="notice"><%= notice %></p>
+
+<ul class="list-group">
+  <li class="list-group-item">
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+
+  </li>
+  <li class="list-group-item">
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+
+
+  </li>
+  <li class="list-group-item">
+  <strong>Phone Number:</strong>
+  <%= @restaurant.phone_number %>
+
+
+  </li>
+  <li class="list-group-item">
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+
+
+  </li>
+
+<h1>Reviews</h1>
+<% if @restaurant.reviews.present? %>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+   <li class="list-group-item">
+     <%= review.content %> - rating: <%= review.rating %>
+   </li>
+  <% end %>
+</ul>
+<% else %>
+ <h1>This Restaurant has no reviews</h1>
+<% end %>
+
+</ul>
+
+<%= link_to new_restaurant_review_path(@restaurant) do%>
+<i class="fas fa-comments"></i>
+<% end %>
+<%= link_to restaurants_path do%>
+<i class="fas fa-backward"></i>
+<% end %>
+
+</div>
